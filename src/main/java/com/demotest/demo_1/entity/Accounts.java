@@ -8,12 +8,12 @@ import lombok.*;
 @Getter@Setter@ToString@AllArgsConstructor@NoArgsConstructor
 public class Accounts extends BasicEntity {
 
-    public Long customer_id;
+    private Long customer_id;
 
     @Id
-    public Long account_number;
+    private Long account_number;
 
-    public String account_type;
+    private String account_type;
 
-    public String branch_address;
+    private String branch_address;
 }

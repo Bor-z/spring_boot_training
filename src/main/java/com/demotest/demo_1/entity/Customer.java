@@ -12,11 +12,11 @@ public class Customer extends BasicEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long customer_id;
+    private Long customer_id;
 
-    public String name;
+    private String name;
 
-    public String email;
+    private String email;
 
-    public String mobile_number;
+    private String mobile_number;
 }

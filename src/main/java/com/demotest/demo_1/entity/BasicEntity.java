@@ -13,14 +13,14 @@ import java.time.LocalDateTime;
 public class BasicEntity {
 
     @Column(updatable = false)
-    public LocalDateTime created_at;
+    private LocalDateTime created_at;
 
     @Column(updatable = false)
-    public String created_by;
+    private String created_by;
 
     @Column(insertable = false)
-    public LocalDateTime updated_at;
+    private LocalDateTime updated_at;
 
     @Column(insertable = false)
-    public String updated_by;
+    private String updated_by;
 }
