@@ -1,5 +1,6 @@
 package com.demotest.demo_1.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.*;
@@ -8,7 +9,8 @@ import lombok.*;
 @Getter@Setter@ToString@AllArgsConstructor@NoArgsConstructor
 public class Accounts extends BasicEntity {
 
-    private Long customer_id;
+    @Column(name = "customer_id")
+    private Long customerId;
 
     @Id
     private Long account_number;

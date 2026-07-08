@@ -9,7 +9,8 @@ public class Customer extends BasicEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long customer_id;
+    @Column(name = "customer_id")
+    private Long customerId;
 
     private String name;
 

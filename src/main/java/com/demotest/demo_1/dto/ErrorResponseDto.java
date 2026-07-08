@@ -14,7 +14,7 @@ public class ErrorResponseDto {
 
     private String error_message;
 
-    private LocalDateTime error_tıme;
+    private LocalDateTime error_time;
 
 
 }
