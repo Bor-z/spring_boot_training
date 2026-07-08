@@ -8,5 +8,5 @@ public class CustomerDto {
 
     private String email;
 
-    private String mobile_number;
+    private String mobileNumber;
 }

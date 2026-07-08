@@ -1,9 +1,6 @@
 package com.demotest.demo_1.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -18,5 +15,6 @@ public class Customer extends BasicEntity {
 
     private String email;
 
-    private String mobile_number;
+    @Column(name = "mobile_number")
+    private String mobileNumber;
 }
