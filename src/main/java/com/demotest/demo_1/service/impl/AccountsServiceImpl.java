@@ -70,4 +70,28 @@ public class AccountsServiceImpl implements AccountsService {
 
         return cusDto;
     }
+
+    @Override
+    public boolean updateAccount(CustomerDto customerDto){
+        boolean succes = false;
+        AccountsDto accDto = customerDto.getAccountsDto();
+        if(accDto != null){
+            Accounts acc = accountsRepository.findById(accDto.getAccount_number()).orElseThrow(
+                    ()-> new ResourceNotFoundException("Account", "accountNumber", accDto.getAccount_number().toString())
+            );
+            AccountsMapper.mapToAccounts(accDto,acc);
+            acc = accountsRepository.save(acc);
+
+            Long cusId = acc.getCustomerId();
+            System.out.println("test cusId : "+cusId.toString());
+            Customer cus = customerRepository.findById(cusId).orElseThrow(
+                    ()-> new ResourceNotFoundException("Customer", "customerId", cusId.toString())
+            );
+
+            CustomerMapper.mapToCustomer(cus,customerDto);
+            customerRepository.save(cus);
+            succes = true;
+        }
+        return succes;
+    }
 }
