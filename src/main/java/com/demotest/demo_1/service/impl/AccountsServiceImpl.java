@@ -33,8 +33,6 @@ public class AccountsServiceImpl implements AccountsService {
             throw new CustomerAlreadyExistsException("Customer already exists :( with mobile number: "+customer.getMobileNumber());
         }
 
-        customer.setCreated_at(LocalDateTime.now());
-        customer.setCreated_by("test user");
         Customer s_customer = customerRepository.save(customer);
         accountsRepository.save(createAccountDetails(s_customer));
     }
@@ -48,8 +46,6 @@ public class AccountsServiceImpl implements AccountsService {
         newAccount.setAccount_type(AccountsConstants.SAVINGS);
         newAccount.setBranch_address(AccountsConstants.ADDRESS);
 
-        newAccount.setCreated_by("test user");
-        newAccount.setCreated_at(LocalDateTime.now());
         return newAccount;
     }
 
