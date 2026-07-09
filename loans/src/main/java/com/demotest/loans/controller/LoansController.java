@@ -30,7 +30,7 @@ public class LoansController {
         return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseDto(LoansConstant.STATUS_201,LoansConstant.MESSAGE_201));
     }
 
-    @GetMapping(path = "fetch")
+    @GetMapping(path = "/fetch")
     public ResponseEntity<LoansDto> fetchLoan(@RequestParam
                                                   @Pattern(regexp="(^$|[0-9]{10})",message = "MobileNumber must be 10 digits")
                                                   String mobileNumber){
@@ -47,5 +47,17 @@ public class LoansController {
             return ResponseEntity.status(HttpStatus.OK).body(new ResponseDto(LoansConstant.STATUS_200,LoansConstant.MESSAGE_200));
         }
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ResponseDto(LoansConstant.STATUS_417,LoansConstant.MESSAGE_417_UPDATE));
+    }
+
+    @DeleteMapping(path = "/delete")
+    public ResponseEntity<ResponseDto> deleteLoan(@RequestParam
+                                                      @Pattern(regexp="(^$|[0-9]{10})",message = "MobileNumber must be 10 digits")
+                                                      String mobileNumber){
+        boolean sus = loansService.deleteLoan(mobileNumber);
+
+        if(sus){
+            return ResponseEntity.status(HttpStatus.OK).body(new ResponseDto(LoansConstant.STATUS_200,LoansConstant.MESSAGE_200));
+        }
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ResponseDto(LoansConstant.STATUS_417,LoansConstant.MESSAGE_417_DELETE));
     }
 }

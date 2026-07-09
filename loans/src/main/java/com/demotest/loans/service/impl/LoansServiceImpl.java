@@ -63,6 +63,16 @@ public class LoansServiceImpl implements LoansService {
         }
         loansRepository.save(LoansMapper.mapToLoans(loansDto, op_loan.get()));
         return true;
+    }
 
+    @Override
+    public boolean deleteLoan(String mobileNumber){
+        Optional<Loans> op_loan = loansRepository.findByMobileNumber(mobileNumber);
+
+        if(op_loan.isEmpty()){
+            throw new ResourceNotFoundException("Loan","MObileNumber",mobileNumber);
+        }
+        loansRepository.deleteById(op_loan.get().getLoanId());
+        return true;
     }
 }
