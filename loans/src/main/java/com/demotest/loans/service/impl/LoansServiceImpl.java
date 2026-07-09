@@ -37,9 +37,9 @@ public class LoansServiceImpl implements LoansService {
         nloan.setLoanNumber(Long.toString(randomLoanNumber));
         nloan.setMobileNumber(mobileNumber);
         nloan.setLoan_type(LoansConstant.HOME_LOAN);
-        nloan.setTotal_loan((LoansConstant.NEW_LOAN_LIMIT));
+        nloan.setTotal_loan(LoansConstant.NEW_LOAN_LIMIT);
         nloan.setAmount_paid(0);
-        nloan.setOutstanding_amount(0);
+        nloan.setOutstanding_amount(LoansConstant.NEW_LOAN_LIMIT);
         return nloan;
     }
 
