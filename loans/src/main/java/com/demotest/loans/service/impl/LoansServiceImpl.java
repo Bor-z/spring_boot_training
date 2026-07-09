@@ -40,8 +40,6 @@ public class LoansServiceImpl implements LoansService {
         nloan.setTotal_loan((LoansConstant.NEW_LOAN_LIMIT));
         nloan.setAmount_paid(0);
         nloan.setOutstanding_amount(0);
-        nloan.setCreated_at(LocalDateTime.now());
-        nloan.setCreated_by("bora");
         return nloan;
     }
 
