@@ -40,4 +40,14 @@ public class AccountsController {
         }
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ResponseDto(AccountsConstants.STATUS_417, AccountsConstants.MESSAGE_417_UPDATE));
     }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<ResponseDto> deleteAccount(@RequestParam String mobileNumber){
+        boolean sus = accountsService.deleteAccount(mobileNumber);
+        if(sus){
+            return ResponseEntity.status(HttpStatus.OK).body(new ResponseDto(AccountsConstants.STATUS_200, AccountsConstants.MESSAGE_200));
+        }
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ResponseDto(AccountsConstants.STATUS_417, AccountsConstants.MESSAGE_417_DELETE));
+
+    }
 }
