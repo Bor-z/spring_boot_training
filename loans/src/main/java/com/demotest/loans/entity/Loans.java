@@ -1,0 +1,29 @@
+package com.demotest.loans.entity;
+
+import jakarta.persistence.*;
+import lombok.*;
+
+@Entity
+@Getter@Setter@ToString@AllArgsConstructor
+@NoArgsConstructor
+public class Loans extends BasicEntity{
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "loan_id")
+    private Long loanId;
+
+    @Column(name = "mobile_number")
+    private String mobileNumber;
+
+    private String loan_number;
+
+    private String loan_type;
+
+    @Column(updatable = false)
+    private Long total_loan;
+
+    private Long amount_paid;
+
+    private Long outstanding_amount;
+}
