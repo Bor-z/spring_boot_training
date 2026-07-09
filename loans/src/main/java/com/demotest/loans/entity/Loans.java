@@ -16,7 +16,8 @@ public class Loans extends BasicEntity{
     @Column(name = "mobile_number")
     private String mobileNumber;
 
-    private String loan_number;
+    @Column(name = "loan_number")
+    private String loanNumber;
 
     private String loan_type;
 

@@ -9,11 +9,13 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path="/api", produces = MediaType.APPLICATION_JSON_VALUE)
 @AllArgsConstructor
+@Validated
 public class LoansController {
 
     LoansService loansService;
@@ -34,5 +36,15 @@ public class LoansController {
         LoansDto loansDto = loansService.fetchLoan(mobileNumber);
 
         return ResponseEntity.status(HttpStatus.OK).body(loansDto);
+    }
+
+    @PutMapping(path = "/update")
+    public ResponseEntity<ResponseDto> updateLoan(@RequestBody LoansDto loansDto){
+        boolean sus = loansService.updateLoan(loansDto);
+
+        if(sus){
+            return ResponseEntity.status(HttpStatus.OK).body(new ResponseDto(LoansConstant.STATUS_200,LoansConstant.MESSAGE_200));
+        }
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ResponseDto(LoansConstant.STATUS_417,LoansConstant.MESSAGE_417_UPDATE));
     }
 }

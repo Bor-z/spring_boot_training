@@ -3,6 +3,7 @@ package com.demotest.loans.dto;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.PositiveOrZero;
 import lombok.Data;
 
 @Data
@@ -13,18 +14,18 @@ public class LoansDto {
     private String mobileNumber;
 
     @NotEmpty(message = "LoanNumber can not be a null or empty")
-    private String loan_number;
+    private String loanNumber;
 
     @NotEmpty(message = "Loan type can not be a null or empty")
     private String loan_type;
 
     @NotEmpty(message = "Total loan can not be a null or empty")
-    @Min(value = 0, message = "Total loan can't be negative.")
+    @PositiveOrZero(message = "Total loan can't be negative.")
     private int total_loan;
 
-    @Min(value = 0, message = "Amount paid can't be negative.")
+    @PositiveOrZero(message = "Amount paid can't be negative.")
     private int amount_paid;
 
-    @Min(value = 0, message = "Outstanding amount can't be negative.")
+    @PositiveOrZero(message = "Outstanding amount can't be negative.")
     private int outstanding_amount;
 }
