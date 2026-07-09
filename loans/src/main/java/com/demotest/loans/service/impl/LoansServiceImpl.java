@@ -4,6 +4,8 @@ import com.demotest.loans.constant.LoansConstant;
 import com.demotest.loans.dto.LoansDto;
 import com.demotest.loans.entity.Loans;
 import com.demotest.loans.exceptions.LoanAlreadyExistsException;
+import com.demotest.loans.exceptions.ResourceNotFoundException;
+import com.demotest.loans.mappers.LoansMapper;
 import com.demotest.loans.repository.LoansRepository;
 import com.demotest.loans.service.LoansService;
 import lombok.AllArgsConstructor;
@@ -41,5 +43,15 @@ public class LoansServiceImpl implements LoansService {
         nloan.setCreated_at(LocalDateTime.now());
         nloan.setCreated_by("bora");
         return nloan;
+    }
+
+    @Override
+    public LoansDto fetchLoan(String mobileNumber){
+        Optional<Loans> op_loan = loansRepository.findByMobileNumber(mobileNumber);
+
+        if(op_loan.isEmpty()){
+            throw new ResourceNotFoundException("Loan","MObileNumber",mobileNumber);
+        }
+        return LoansMapper.mapToLoansDto(op_loan.get(), new LoansDto());
     }
 }

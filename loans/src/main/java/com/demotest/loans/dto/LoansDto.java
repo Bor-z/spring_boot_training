@@ -24,4 +24,7 @@ public class LoansDto {
 
     @Min(value = 0, message = "Amount paid can't be negative.")
     private int amount_paid;
+
+    @Min(value = 0, message = "Outstanding amount can't be negative.")
+    private int outstanding_amount;
 }
