@@ -20,8 +20,8 @@ public class LoansDto {
 
     @NotEmpty(message = "Total loan can not be a null or empty")
     @Min(value = 0, message = "Total loan can't be negative.")
-    private Long total_loan;
+    private int total_loan;
 
     @Min(value = 0, message = "Amount paid can't be negative.")
-    private Long amount_paid;
+    private int amount_paid;
 }

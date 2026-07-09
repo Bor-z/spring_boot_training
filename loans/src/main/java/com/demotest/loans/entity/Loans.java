@@ -21,9 +21,9 @@ public class Loans extends BasicEntity{
     private String loan_type;
 
     @Column(updatable = false)
-    private Long total_loan;
+    private int total_loan;
 
-    private Long amount_paid;
+    private int amount_paid;
 
-    private Long outstanding_amount;
+    private int outstanding_amount;
 }
