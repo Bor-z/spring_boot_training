@@ -19,7 +19,6 @@ public class LoansDto {
     @NotEmpty(message = "Loan type can not be a null or empty")
     private String loan_type;
 
-    @NotEmpty(message = "Total loan can not be a null or empty")
     @PositiveOrZero(message = "Total loan can't be negative.")
     private int total_loan;
 

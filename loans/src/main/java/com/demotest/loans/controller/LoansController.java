@@ -4,6 +4,7 @@ import com.demotest.loans.constant.LoansConstant;
 import com.demotest.loans.dto.LoansDto;
 import com.demotest.loans.dto.ResponseDto;
 import com.demotest.loans.service.LoansService;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -39,7 +40,7 @@ public class LoansController {
     }
 
     @PutMapping(path = "/update")
-    public ResponseEntity<ResponseDto> updateLoan(@RequestBody LoansDto loansDto){
+    public ResponseEntity<ResponseDto> updateLoan(@Valid @RequestBody LoansDto loansDto){
         boolean sus = loansService.updateLoan(loansDto);
 
         if(sus){
