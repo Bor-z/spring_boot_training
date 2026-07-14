@@ -6,6 +6,7 @@ import com.demotest.cards.dto.ResponseDto;
 import com.demotest.cards.repository.CardsRepository;
 import com.demotest.cards.service.CardsService;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -25,6 +26,7 @@ public class CardsController {
 
     @PostMapping(path = "/create")
     public ResponseEntity<ResponseDto> createCard(@RequestParam
+                                                      @NotEmpty(message = "MobileNumber can not be a null or empty")
                                                       @Pattern(regexp="(^$|[0-9]{10})",message = "MobileNumber must be 10 digits")
                                                       String mobileNumber){
         cardsService.createCards(mobileNumber);
