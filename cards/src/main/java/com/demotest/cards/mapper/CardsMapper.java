@@ -11,7 +11,7 @@ public class CardsMapper {
         cardsDto.setAmountUsed(cards.getAmountUsed());
         cardsDto.setMobileNumber(cards.getMobileNumber());
         cardsDto.setTotalLimit(cards.getTotalLimit());
-        cardsDto.setAvailableAmount(cards.getAvailableAmount());
+        cardsDto.setAvailableAmount(cards.getTotalLimit() - cards.getAmountUsed());
 
         return cardsDto;
     }
@@ -22,7 +22,7 @@ public class CardsMapper {
         cards.setAmountUsed(cardsDto.getAmountUsed());
         cards.setMobileNumber(cardsDto.getMobileNumber());
         cards.setTotalLimit(cardsDto.getTotalLimit());
-        cards.setAvailableAmount(cardsDto.getAvailableAmount());
+        cards.setAvailableAmount(cardsDto.getTotalLimit() - cardsDto.getAmountUsed());
 
         return cards;
     }
